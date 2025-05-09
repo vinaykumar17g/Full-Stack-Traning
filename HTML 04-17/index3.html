@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="message"></p>
+    <center>
+      <table border="2">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>subject</th>
+            <th>message</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="one">
+        </tbody>
+      </table>
+    </center>
+    <script>
+      async function fun() {
+        let api = await fetch(
+          "https://b4a7-2409-4085-2e13-e87-9994-c546-99e6-1f57.ngrok-free.app/contact",
+          {
+            method: "PUT",
+          }
+        );
+        let html = "";
+        let response = await api.json();
+        console.log(response);
+
+        for (let i = 0; i < response.length; i++) {
+          html += `
+              <tr>
+                <td>${response[i]["id"]}</td>
+                <td>${response[i]["name"]}</td>
+                <td>${response[i]["email"]}</td>
+                <td>${response[i]["subject"]}</td>
+                <td>${response[i]["message"]}</td>
+                <td><button onclick=delete1(${response[i]["id"]})>delete</button></td>
+              </tr>`;
+        }
+        document.querySelector("#one").innerHTML = html;
+      }
+      fun();
+
+      async function delete1(id) {
+        let api = await fetch(
+          "https://b4a7-2409-4085-2e13-e87-9994-c546-99e6-1f57.ngrok-free.app/contact/" +
+            id,
+          {
+            method: "DELETE",
+          }
+        );
+        let regponse = await api.json();
+        alert("Contact deleted "+id);
+        fun();
+      }
+    </script>
+  </body>
+</html>

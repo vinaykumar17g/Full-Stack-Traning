@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- creating a product -->
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" /><br /><br />
+            <label for="price">Price</label>
+            <input type="text" id="price" /><br /><br />
+            <label for="Category">Category</label>
+            <input type="text" id="category" /><br /><br />
+            <label for>image</label>
+            <input type="file" id="file" /><br /><br />
+            <label for>description</label>
+            <input
+                type="text"
+                placeholder="Description"
+                id="description" /><br /><br />
+            <button onclick="editcreate()">Edit
+                Products</button><button>Cancel</button>
+        </div>
+
+        <script>
+        // given url string
+let url_str = window.location.href;
+
+let url = new URL(url_str);
+let search_params = url.searchParams; 
+let id = search_params.get('id');
+
+// get value of "id" parameter
+// "100"
+//console.log(search_params.get('id'));
+        let getData = async()=>{
+            let response = await fetch(
+          `https://d91f-157-38-245-63.ngrok-free.app/products/${id}`,
+          {
+            method: "PATCH",
+          }
+        );
+        let responseJson = await response.json();
+        console.log(responseJson);
+        let name = document.getElementById("name").value = responseJson["name"];
+        let price = document.getElementById("price").value = responseJson["price"];;
+        let category = document.getElementById("category").value = responseJson["category"];;
+        let description = document.getElementById("description").value = responseJson["description"];;
+        }
+        getData();
+      let editcreate = async () => {
+        let name = document.getElementById("name").value;
+        let price = document.getElementById("price").value;
+        let category = document.getElementById("category").value;
+        let image = document.getElementById("file");
+        let description = document.getElementById("description").value;
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("price",price);
+        formData.append("category",category);
+        formData.append("image", image.files[0]);
+        formData.append("description", description);
+
+        let response = await fetch(
+          `https://d91f-157-38-245-63.ngrok-free.app/products/${id}`,
+          {
+            method: "put",
+            headers: {
+              "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYwLCJpZCI6NjAsImlhdCI6MTc0NDc4OTIzNCwiZXhwIjoxNzQ1Mzk0MDM0fQ.RmN3v0VWEUgcflxK31chyfShdFpOpAj2_b7Hx0t8ZDo"
+            },
+            body: formData,
+          }
+        );
+        let responseJson = await response.json();
+        console.log(responseJson);
+      };
+      
+
+     
+    </script>
+</body>
+</html>

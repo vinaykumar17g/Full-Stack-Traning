@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+    <style>
+        #container
+        {
+            display: flex;
+            justify-content:space-evenly;
+            gap: 10px;
+        }
+        img
+        {
+            width:150px;
+            border: 1px solid black;
+            border-radius:5px;
+        }
+        img:hover
+        {
+            width:155px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/df95116d29.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+    <h3>04/04/2025</h3><hr/> 
+    <table border="2">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Vinay</td>
+            <td>18</td>
+            <td>India</td>
+        </tr>
+        <tr>
+            <td>Ritik</td>
+            <td>19</td>
+            <td>India</td>
+        </tr>
+        <tr>
+            <td>Sachin</td>
+            <td>19</td>
+            <td>India</td>
+        </tr>
+    </table>
+
+    <hr/>
+
+
+    <table border="2">
+        <caption>Weather</caption>
+        <tr>
+            <th colspan="1" rowspan="2">Station</th>
+            <th colspan="2" rowspan="1">Temperature</th>
+            <th colspan="1" rowspan="2">Humidity</th>
+            <th colspan="1" rowspan="2">Weather</th>
+        </tr>
+        <tr>
+            <th>Max</th>
+            <th>Min</th>
+    
+        </tr>
+        <tr>
+            <td>India</td>
+            <td>19</td>
+            <td>29</td>
+            <td>60%</td>
+            <td>cloudy</td>
+        </tr>
+        <tr>
+            <td>India</td>
+            <td>19</td>
+            <td>29</td>
+            <td>60%</td>
+            <td>cloudy</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table border="2" style="border-collapse: collapse;">
+        <caption>Time Table</caption>
+        <tr>
+            <th colspan="6">Time Table</th>
+        </tr>
+        <tr>
+            <th rowspan="6">Hours</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>Science</td>
+            <td>Math</td>
+            <td>Science</td>
+            <td>Art</td>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>Science</td>
+            <td>Math</td>
+            <td>Science</td>
+            <td>Art</td>
+        </tr>
+        <tr>
+                <th colspan="5">Lunch</th>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>Science</td>
+            <td>Math</td>
+            <td rowspan="2" colspan="2"><center>Project</center></td>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>Science</td>
+            <td>Math</td>
+        </tr>
+    </table>
+
+
+    <hr/>
+    <form action="#">
+        <label for id="name">Name : </label>
+        <input type="text" id="name" placeholder="Enter name"/><br><br>
+        <label for id="password">Password : </label>
+        <input type="password" id="password" placeholder="Enter password"/><br><br>
+
+
+        <label>Gender : </label>
+        <input type="radio" id="male"name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female"/>
+        <label for="female">Female</label><br><br>
+
+
+
+
+
+        <label for id="email">Email : </label>
+        <input type="email" id="email" placeholder="Enter email"/><br><br>
+        <label for id="phone">phone : </label>
+        <select>
+            <option>+91</option>
+            <option>+92</option>
+        </option>
+        <input type="number" id="phone" placeholder="Enter phone"/><br><br>
+
+        <button type="submit">Submit </button>
+    </form>
+    
+    <hr/>
+    <h3>05/04/2024</h3><hr>
+
+    <ol type="I">
+        <li>Apple</li>
+        <li>Mangoes</li>
+    </ol>
+
+    <ul type="square">
+        <li>Apple</li>
+        <li>MAngoes</li>
+    </ul>
+
+    <dl>
+        <dt>Tea<dd>
+            This is a tea
+        </dd></dt>
+    </dl>
+
+    <hr>
+
+    <ol>
+        <li>Main course</li>
+        <ul type="circle">
+            <li>Starter</li>
+            <li>Entree</li>
+        </ul>
+        <li>
+            Dessert
+        </li>
+        <ol>
+            <li>Icecream</li>
+            <li>Cake</li>
+        </ol>
+    </ol>
+
+    <hr>
+    <H3>HTML DESCRIPTION LISTS
+    </H3>
+    <dl>
+        <dt>HTML
+            <dd>HYPER TEXT MARKUP LANGIAGE</dd>
+        </dt>
+        <dt>CSS
+            <dd>CASCADING STYLE SHEET</dd>
+        </dt>
+        <dt>JAVASCRIPT
+            <dd>A HIGH LEVEL INTERPRETED PROGRAMMING LANGUAGE THAR CONFERMS THE ECMA SCRIPT.</dd>
+        </dt>
+    </dl>
+
+    <hr>
+
+    <ul>
+        <li>Fruits</li>
+            <ul type="circle">
+                <li>mango</li>
+                <li>Orange</li>
+            </ul>
+        <li>Vegetables</li>
+        <ul type="circle">
+            <li>Cabbage</li>
+            <li>Capsicum</li>
+            <ul type="square">
+                <li>GreenCapsicum</li>
+                <li>Yellow Capsicum</li>
+                <li>Red Capsicum</li> 
+            </ul>
+        </ul>
+    </ul>
+    <hr>
+    <a href="https://www.google.com">google</a>
+    <hr>
+
+    <div id="container"> 
+        <div id="contain" style="text-align: center;">
+            <i class="fa-solid fa-house"></i>
+            <h4>Book and Apponment</h4>
+            <p>lasdeeewrewrew rwerwefdsfnsfds,fnds</p>
+        </div>
+        <div id="contain" style="text-align: center;">
+            <i class="fa-solid fa-house"></i>
+            <h4>Pick Up in Store</h4>
+            <p>lasdeeewrewrew rwerwefdsfnsfds,fnds</p>
+        </div>
+        <div id="contain" style="text-align: center;">
+            <i class="fa-solid fa-house"></i>
+            <h4>Special bookingt</h4>
+            <p>lasdeeewrewrew rwerwefdsfnsfds,fnds</p>
+        </div>
+        <div id="contain" style="text-align: center;">
+            <i class="fa-solid fa-house"></i>
+            <h4>Free Global return </h4>
+            <p>lasdeeewrewrew rwerwefdsfnsfds,fnds</p>
+        </div>
+    </div>
+
+    <hr>
+    <div id="container">
+        <div style="text-align: center;">
+            <img src="https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=" alt="tajmahal"/>
+            <p>Taj Mahal</p><p>30$</p>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=" alt="tajmahal"/>
+            <p>Taj Mahal</p><p>30$</p>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=" alt="tajmahal"/>
+            <p>Taj Mahal</p><p>30$</p>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=" alt="tajmahal"/>
+            <p>Taj Mahal</p><p>30$</p>
+        </div>
+    </div>
+<hr/>
+
+<div id="container" style="display: flex; padding: 100px;background-color: gray;">
+    <div style="width: 50%;">
+        <img src="https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=" alt="tajmahal" style="width:100%;height:100%"/>
+    </div>
+    <div  style="width: 50%; background:aqua" >
+        <h1 style="text-align: center;">CLASSIC WINTER COLLECTION</h1>
+        <p style="padding-left:10px">solorum quos. Nesciunt, sunt?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt fugit, t optio neque non suscipit eos sit laboriosam tempore laborum inventore animi delectus accusantium debitis nemo ratione explicabo. Non, maiores a! Nihil aspernatur sint quod?</p>
+    </div>
+</div>
+<hr>
+
+<h3>07/04/2025</h3>
+    <div id="div">VINAY KUMAR</div>
+    <div id="div1">VINAY KUMAR</div>
+    <br>
+    <hr>
+    <h3>08/04/2024</h3>
+
+    <h1 id="one" class="one">
+        Hello world!
+    </h1>
+    <div>
+        <h1>Hello
+            <span>World!
+            </span></h1>
+        </div>
+        <hr>
+
+        <h3>
+09/04/2025
+        </h3>
+        <hr>
+        <div id="abc" class="one">
+        </div>
+        <script>
+            async function fun(){
+              let  api =await fetch("https://fakestoreapi.com/products")
+              let  arr = await api.json();
+              //console.log(response);
+              //let arr = []
+              let htmlCode="";
+              for(let i=0;i<arr.length;i++)
+              {
+                  htmlCode +=`<img src=${arr[i]["image"]} alt="" width="100px">
+                  <p>${arr[i]["title"]}</p>
+                  <p>price:${arr[i]["price"]}</p>
+                  <p>category:${arr[i]["category"]}</p>
+                  <p>rating:${arr[i]["rating"]["rate"]}</p>`
+                }
+                //console.log(htmlCode)
+                document.getElementById("abc").innerHTML=htmlCode;
+            }
+            fun();
+        </script>
+</body>
+</html>

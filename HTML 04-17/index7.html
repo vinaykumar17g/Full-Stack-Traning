@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Login API -->
+
+    <!-- <div style="display:flex; flex-direction: column; justify-content: center;align-items: center;">
+        <h1>Log In and Explore</h1>
+        <label for="email">Email</label>
+        <input type="email"id="email"><br>
+        <label for="password">Password</label>
+        <input type="password"id="password"><br>
+        <button onclick="login()"style="background-color:rgb(84, 121, 200); color: white;border-radius:5px">Log in</button>
+    </div>
+    <script>
+        let login = async()=>
+        {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            console.log(email);
+            console.log(password);
+            let obj =
+            {
+                email:email,
+                password:password
+            }
+            let response = await fetch("https://d91f-157-38-245-63.ngrok-free.app/authenticate",{
+                method:"post",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(obj)
+            });
+            let responseJson = await response.json();
+            console.log(responseJson);
+        }
+    </script> -->
+
+    <!-- Register API -->
+
+    <!-- <div style="display: flex;flex-direction: column;justify-content: center; align-items: center;"> 
+        <h1>Registration</h1><br>
+        <label for="first-name">First Name</label>
+        <input type="text"id="first-name"><br>
+        <label for="last-name">Last Name</label>
+        <input type="text"id="last-name"><br>
+        <label for="email">Email</label>
+        <input type="email"id="email"><br>
+        <label for="password">Password</label>
+        <input type="password"id="password"><br>
+        <label for="c-password">Confirm Password</label>
+        <input type="password"id="c-password"><br>
+        <label for="accept-terms">Accept Terms</label>
+        <input type="text"id="accept-terms"><br>
+        <button onclick="register()"style="background-color:rgb(84, 121, 200); color: white;border-radius:5px">Register</button>
+    </div>
+    
+    <script>
+        let register = async ()=>
+        {
+            let First_Name = document.getElementById("first-name").value;
+            let Last_Name = document.getElementById("last-name").value;
+            let Email = document.getElementById("email").value;
+            let Password = document.getElementById("password").value;
+            let Confirm_pasword = document.getElementById("c-password").value;
+            let Accept_terms = document.getElementById("accept-terms").value;
+
+            let obj = 
+            {
+                firstName : First_Name,
+                lastName : Last_Name,
+                email: Email,
+                password : Password,
+                confirmPassword : Confirm_pasword,
+                acceptTerms : Accept_terms
+            }
+            let response = await fetch("https://d91f-157-38-245-63.ngrok-free.app/register",{
+                method:"post",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(obj)
+            });
+            let responseJson = await response.json();
+            console.log(responseJson);
+        }
+    </script>-->
+
+    <!-- Creating a product -->
+
+    <!-- <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" /><br /><br />
+      <label for="price">Price</label>
+      <input type="text" id="price" /><br /><br />
+      <label for="Category">Category</label>
+      <input type="text" id="category" /><br /><br />
+      <label for="">image</label>
+      <input type="file" id="file" /><br /><br />
+      <label for="">description</label>
+      <input
+        type="text"
+        placeholder="Description"
+        id="description"
+      /><br /><br />
+      <button onclick="create()">Add Products</button><button>Cancel</button>
+    </div> 
+
+    <script>
+      let create = async () => {
+        let name = document.getElementById("name").value;
+        let price = document.getElementById("price").value;
+        let category = document.getElementById("category").value;
+        let image = document.getElementById("file");
+        let description = document.getElementById("description").value;
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("price",price);
+        formData.append("category",category);
+        formData.append("image", image.files[0]);
+        formData.append("description", description);
+
+        let response = await fetch(
+          "https://d91f-157-38-245-63.ngrok-free.app/products",
+          {
+            method: "post",
+            headers: {
+              "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYwLCJpZCI6NjAsImlhdCI6MTc0NDc4OTIzNCwiZXhwIjoxNzQ1Mzk0MDM0fQ.RmN3v0VWEUgcflxK31chyfShdFpOpAj2_b7Hx0t8ZDo"
+            },
+            body: formData,
+          }
+        );
+        let responseJson = await response.json();
+        console.log(responseJson);
+      };
+    </script>-->
+
+    <!--  all product and delete product -->
+
+    <div class="container">
+      <h1>Product Management</h1>
+      <button class="create-btn">Create Product</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="one"></tbody>
+      </table>
+      <button class="create-btn" onclick="Show()">Show ALL</button>
+    </div>
+    <script>
+      let Show = async () => {
+        let response = await fetch(
+          "https://d91f-157-38-245-63.ngrok-free.app/products",
+          {
+            method: "PUT",
+          }
+        );
+        let responseJson = await response.json();
+        console.log(responseJson);
+        console.log(responseJson[0]["id"]);
+        document.getElementById("one").innerHTML = "";
+        for (let i = 0; i < responseJson.length; i++) {
+          document.getElementById("one").innerHTML += ` <tr>
+              <td>${responseJson[i]["id"]}</td>
+              <td>${responseJson[i]["name"]}</td>
+              <td>${responseJson[i]["price"]}</td>
+              <td>${responseJson[i]["category"]}</td>
+              <td>${responseJson[i]["description"]}</td>
+              <td><button class=".delete-btn"onclick = "del(${responseJson[i]["id"]})">Delete</button>
+                <button class=".edit-btn"><a href="/index8.html?id=${responseJson[i]["id"]}">Edit</a></button></td>
+              </tr>`;
+        }
+      };
+      let del = async (id) => {
+        let del_data = await fetch(
+          `https://d91f-157-38-245-63.ngrok-free.app/products/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYwLCJpZCI6NjAsImlhdCI6MTc0NDc4OTIzNCwiZXhwIjoxNzQ1Mzk0MDM0fQ.RmN3v0VWEUgcflxK31chyfShdFpOpAj2_b7Hx0t8ZDo",
+            },
+          }
+        );
+        let del_data_json = await del_data.json();
+        Show();
+      };
+    </script>
+  </body>
+   
+</html>

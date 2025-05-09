@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+            <input type="email" placeholder="Enter your email"  id="email">
+            <input type="password" placeholder="Enter your password" id="password">
+            <button id="login">Login</button>
+    </div>
+
+    <script>
+        document.querySelector("#login").addEventListener('click',()=>
+        {
+            let email=document.querySelector("#email").value;
+            let password=document.querySelector("#password").value;
+            let obj ={
+                'email':email,
+                'password':password
+            }
+            console.log(obj)
+            login(obj);
+        })
+        async function login(data)
+        {
+            let api=await fetch("https://d91f-157-38-245-63.ngrok-free.app/authenticate",{
+                method:'POST',
+                headers:{ 'Content-Type': 'application/json' },
+                body:JSON.stringify(data)
+            })
+            let apijson = await api.json();
+            if(api.ok)
+            {
+                var token =apijson["jwtToken"];
+                console.log(token)
+            }
+        }
+    </script>
+</body>
+</html>

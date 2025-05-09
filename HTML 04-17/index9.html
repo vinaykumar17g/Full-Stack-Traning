@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #34495e;
+        }
+
+        #prompt {
+            padding: 10px;
+            margin: 10px 0;
+            width: 60%;
+            font-size: 1em;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+        }
+
+        #btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #btn:hover {
+            background-color: #2980b9;
+        }
+
+        #image {
+            display: none;
+            margin-top: 20px;
+            max-width: 300px;
+            border: 2px solid #2c3e50;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter image you want to generate</h1>
+    <label for="prompt">Enter image name:</label>
+    <input type="text" id="prompt" placeholder="Type something...">
+    <button id="btn" onclick=getImage()>Submit</button>
+    <br>
+    <img id="image">
+    <script>
+        async function getImage()
+        {
+            const image = document.getElementById('image');
+            image.style.display = 'block';
+            let prompt=document.querySelector("#prompt").value;
+            let obj={
+                "prompt":prompt
+            }
+            let api=await fetch("https://d91f-157-38-245-63.ngrok-free.app/generate-image",
+            {
+                method:"post",
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify(obj)
+            })
+            if(api.ok)
+            {
+                let response =await api.json();
+                console.log(response["image"]["data"][0]["b64_json"]);
+                document.querySelector("#image").src="data:image/webp;base64,"+response["image"]["data"][0]["b64_json"]
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div id="two">
+
+    </div>
+    <div id="abc" class="one">
+    </div> -->
+    <!-- <script>
+        async function fun(){
+          let  api =await fetch("https://fakestoreapi.com/products")
+          let  arr = await api.json();
+          //console.log(response);
+          //let arr = []
+          let htmlCode="";
+          for(let i=0;i<arr.length;i++)
+          {
+              htmlCode +=`<img src=${arr[i]["image"]} alt="" width="100px">
+              <p>${arr[i]["title"]}</p>
+              <p>price:${arr[i]["price"]}</p>
+              <p>category:${arr[i]["category"]}</p>
+              <p>rating:${arr[i]["rating"]["rate"]}</p>`
+            }
+            console.log(htmlCode)
+            document.getElementsByClassName("one")[0].innerHTML = htmlCode
+        }
+        fun();
+    </script> -->
+    <!-- <script>
+        async function fun1(){
+          let  api =await fetch("https://api-v1.com/w/sV3.php?key=TOP")
+          let  arr = await api.json();
+          console.log(arr)
+         document.getElementById("two").innerText = arr["k"] 
+         //document.getElementById("two").innerText = arr["B"] 
+        }
+        setInterval(()=>{
+            //fun1();
+            console.log("hello")
+        },1000)
+    </script> -->
+
+    <div id="place">
+      <input type="number" id="pin" />
+      <button id="btn">Search</button>
+      <div id="location"> 
+
+      </div>
+    </div>
+
+    <script>
+      async function fun(a) {
+        let api = await fetch("https://api.zippopotam.us/IN/" + a);
+        let response = await api.json();
+        let location="";
+        for(let i=0;i<response["places"].length;i++)
+        {
+            location+=`<p>${response["places"][i]["place name"]}</p>`
+            console.log(response["places"][i]["place name"]);
+        }
+        document.querySelector("#location").innerHTML=location;
+        console.log(response);
+      }
+      let btn = document.querySelector("#btn");
+      btn.addEventListener("click", () => {
+        fun(document.querySelector("#pin").value);
+      });
+    </script>
+
+    <!-- <script>
+      async function fun(a) {
+        let api = await fetch("https://api-v1.com/w/sV3.php?key=TOS");
+        let response = await api.json();
+        document.querySelector("#j").innerHTML=`<p>${response["j"]}</p>`;
+        
+      }
+      setInterval(()=>
+      {
+        fun();
+      },1000)
+    </script> -->
+
+      <!-- <label for="fname">First Name</label>
+      <input type="text" id="fname" name="fname"/><br>
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lname"/><br>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email"/><br>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password"/><br>
+
+      <label for="cpassword">Confirm Password</label>
+      <input type="password" id="cpassword" name="cpassword"/><br>
+
+      <label for="true">Accept condition</label>
+      <input type="text" id="true" name="true"/><br><br>
+
+      <input type="submit" name="submit" id="submit">
+
+    <script>
+
+      document.querySelector("#submit").addEventListener('click',()=>
+      {
+        let fname=document.querySelector("#fname").value;
+        let lname=document.querySelector("#lname").value;
+        let email=document.querySelector("#email").value;
+        let password=document.querySelector("#password").value;
+        let cpassword=document.querySelector("#cpassword").value;
+        let accept=document.querySelector("#true").value;
+        let obj={
+          "firstName":fname,
+          "lastName":lname,
+          "email":email,
+          "password":password,
+          "confirmPassword":cpassword,
+          "acceptTerms":true
+        }
+        fun(obj);
+        console.log(fname,lname,email,password,cpassword,accept)
+      })
+      async function fun(data)
+      {
+        let api=await fetch("https://0a8f-2409-4085-2e13-e87-9994-c546-99e6-1f57.ngrok-free.app/register",
+        {
+          method:'POST',
+          headers:{ 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        }
+        );
+        if(api.ok)
+        {
+          const result = await api.json();
+          console.log(result);
+        }
+      }
+    </script> 
+
+    <label for="email">Email</label>
+      <input type="email" id="email" name="email"/><br>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password"/><br>
+      <input type="submit" name="submit" id="submit">
+      <script>
+
+        document.querySelector("#submit").addEventListener('click',()=>
+        {
+          let email=document.querySelector("#email").value;
+          let password=document.querySelector("#password").value;
+          let obj={
+            "email":email,
+            "password":password,
+          }
+          fun(obj);
+          console.log(email,password)
+        })
+        async function fun(data)
+        {
+          // Store data in localStorage
+        localStorage.setItem('email',data["email"]);
+        localStorage.setItem('password',data["password"]);
+        }
+      </script>-->
+
+
+      <!-- <label for="fname">First Name</label>
+      <input type="text" id="fname" name="fname"/><br>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email"/><br>
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject"/><br>
+
+      <label for="message">Message</label>
+      <input type="text" id="message" name="message"/><br>
+
+      <input type="submit" name="submit" id="submit">
+
+      <div id="one">
+        
+      </div>
+    <script>
+
+      document.querySelector("#submit").addEventListener('click',()=>
+      {
+        let fname=document.querySelector("#fname").value;
+        let email=document.querySelector("#email").value;
+        let subject=document.querySelector("#subject").value;
+        let message=document.querySelector("#message").value;
+        let obj={
+          "name":fname,
+          "email":email,
+          "subject":subject,
+          "message":message
+        }
+        fun(obj);
+        console.log(fname,email,subject,message);
+      })
+      async function fun(data)
+      {
+        let api=await fetch("https://b4a7-2409-4085-2e13-e87-9994-c546-99e6-1f57.ngrok-free.app/contact",
+        {
+          method:'POST',
+          headers:{ 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        }
+        );
+        if(api.ok)
+        {
+          const result = await api.json();
+          console.log(result);
+        }
+      }
+    </script>  -->
+  </body>
+</html>

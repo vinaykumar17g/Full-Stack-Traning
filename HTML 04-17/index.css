@@ -1,0 +1,33 @@
+#div,#div1
+{
+    font-size: 30px;
+    font-style:italic;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color:aqua;
+    text-align:center;
+    border:2px solid aqua;
+    padding:10px 20px;
+    margin:10px 10px 10px 10px;
+    outline:5px double greenyellow;
+    outline-offset:5px;
+    box-shadow: 10px 10px greenyellow;
+    text-shadow: 10px 10px yellow;
+}
+h1
+{
+    color: aqua;
+}
+#one
+{
+    color: orange;
+}
+.one
+{
+    color: greenyellow;
+}
+
+div h1 span
+{
+    color:orange;
+}

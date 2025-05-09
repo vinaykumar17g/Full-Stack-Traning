@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea, button {
+    width: 100%;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.product
+{
+    width:50%;
+}
+    </style>
+</head>
+<body>
+    <center>
+        <div class="product">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter name" required><br>
+    
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Enter description" required></textarea><br>
+    
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" placeholder="Enter price" required><br>
+    
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" placeholder="Enter category" required><br>
+    
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter title" required><br>
+    
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*"><br>
+    
+            <button type="submit" id="submit">Submit</button>
+        </div>
+    </center>
+    <script>
+        const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjY3LCJpZCI6NjcsImlhdCI6MTc0NDc4OTY5MywiZXhwIjoxNzQ1Mzk0NDkzfQ.jzKpIOwOv2ThBnqqAmO5LaBX1EFLDcOJAAgbLS5eurM";
+        let submit=document.querySelector("#submit")
+        submit.addEventListener("click",async()=>
+        {
+            let name=document.querySelector("#name").value;
+            let description=document.querySelector("#description").value;
+            let price=document.querySelector("#price").value;
+            let category=document.querySelector("#category").value;
+            let title=document.querySelector("#title").value;
+            let image=document.querySelector("#image")
+            
+            const formData = new FormData();
+            formData.append("name",name);
+            formData.append("description",description);
+            formData.append("price",price);
+            formData.append("category",category);
+            formData.append("title",title);
+            formData.append("image",image.files[0]);
+            //console.log(title,name,description,price,category);
+            //fun(formData);
+            let api= await fetch("https://d91f-157-38-245-63.ngrok-free.app/products",
+            {
+                method:"POST",
+                headers:{
+                "Authorization":"Bearer "+token},
+                body:formData
+            })
+            let response = await api.json();
+            console.log(response);
+        })
+    </script>
+
+</body>
+</html>
